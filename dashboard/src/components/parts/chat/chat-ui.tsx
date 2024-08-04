@@ -73,7 +73,7 @@ export default function ChatUiComponent() {
                     <TooltipContent side="top">Use Microphone</TooltipContent>
                 </Tooltip>
                 <Button type="submit" size="sm" className="ml-auto gap-1.5 mb-2">
-                    Send Message
+                    Send Message ss
                     <CornerDownLeft className="size-3.5"/>
                 </Button>
             </div>

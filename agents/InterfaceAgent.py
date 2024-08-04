@@ -41,7 +41,9 @@ class InterfaceAgent(Agent):
 
         @app.post("/api/chat")
         async def send_message(message: Message):
-            logger.info(message)
+            logger.info(f"{self.broadcast}")
+            await self.broadcast(pickle.dumps(message))
+            logger.info(f"Sent message: {message}")
 
         # Example Socket.IO event handler
         @sio.event
@@ -59,4 +61,6 @@ class InterfaceAgent(Agent):
         await server.serve()
 
     async def on_message(self, agent_id: "str", data: "bytes", time: "int"):
-        pass
+        logger.info(f"Received message from {agent_id}: {data}")
+        data = pickle.loads(data)
+        logger.info(f"Received message from {agent_id}: {data}")
