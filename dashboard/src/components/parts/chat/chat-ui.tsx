@@ -8,7 +8,7 @@ import {Textarea} from "@/components/ui/textarea"
 import {Tooltip, TooltipContent, TooltipTrigger,} from "@/components/ui/tooltip"
 import {useChatStore} from "@/context/providers/chat-store-provider";
 import {useForm} from "react-hook-form";
-import {MessageType} from "@/context/data/chat-model";
+import {Message, MessageType} from "@/context/data/chat-model";
 
 export default function ChatUiComponent() {
     const {addMessage} = useChatStore((state) => state,)
@@ -23,14 +23,23 @@ export default function ChatUiComponent() {
     return (
         <form
             onSubmit={handleSubmit((data) => {
-                addMessage({
+                const message: Message = {
                     message: data.message,
                     sender: 'user',
-                    time: new Date().toLocaleTimeString(),
+                    time: new Date(),
                     type: MessageType.text,
-                })
+                }
+                addMessage(message)
 
-                reset()
+                fetch('http://localhost:7878/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(message),
+                }).then(() => {
+                    reset()
+                });
 
             })}
             className="relative overflow-hidden rounded-lg border bg-background focus-within:ring-1 focus-within:ring-ring"

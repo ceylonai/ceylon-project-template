@@ -5,6 +5,6 @@ export enum MessageType {
 export interface Message {
     message: string
     sender: string
-    time: string
+    time: Date
     type: MessageType
 }
