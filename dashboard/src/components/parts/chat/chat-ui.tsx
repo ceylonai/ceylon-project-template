@@ -5,21 +5,41 @@ import {CornerDownLeft, Mic, Paperclip} from "lucide-react"
 import {Button} from "@/components/ui/button"
 import {Label} from "@/components/ui/label"
 import {Textarea} from "@/components/ui/textarea"
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipTrigger,
-} from "@/components/ui/tooltip"
+import {Tooltip, TooltipContent, TooltipTrigger,} from "@/components/ui/tooltip"
+import {useChatStore} from "@/context/providers/chat-store-provider";
+import {useForm} from "react-hook-form";
+import {MessageType} from "@/context/data/chat-model";
 
 export default function ChatUiComponent() {
+    const {addMessage} = useChatStore((state) => state,)
+
+    const {
+        reset,
+        register,
+        handleSubmit,
+        formState: {errors},
+    } = useForm();
+
     return (
         <form
+            onSubmit={handleSubmit((data) => {
+                addMessage({
+                    message: data.message,
+                    sender: 'user',
+                    time: new Date().toLocaleTimeString(),
+                    type: MessageType.text,
+                })
+
+                reset()
+
+            })}
             className="relative overflow-hidden rounded-lg border bg-background focus-within:ring-1 focus-within:ring-ring"
         >
             <Label htmlFor="message" className="sr-only">
                 Message
             </Label>
             <Textarea
+                {...register('message', {required: true})}
                 id="message"
                 placeholder="Type your message here..."
                 className="min-h-12 resize-none border-0 p-3 shadow-none focus-visible:ring-0"
