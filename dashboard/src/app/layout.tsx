@@ -8,6 +8,7 @@ import {ThemeProvider} from "@/components/theme-provider";
 import {TailwindIndicator} from "@/components/tailwind-indicator";
 import {SiteHeader} from "@/components/site-header";
 import {TooltipProvider} from "@/components/ui/tooltip";
+import {CounterStoreProvider} from "@/context/providers/counter-store-provider";
 // const inter = Inter({subsets: ["latin"]});
 const fontInter = Inter({
     subsets: ["latin"],
@@ -41,20 +42,20 @@ export default function RootLayout({
             "min-h-screen bg-background font-sans antialiased",
             fontInter.variable
         )}>
+        <CounterStoreProvider>
+            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+                <TooltipProvider>
+                    <div className="relative flex h-screen flex-col">
+                        <SiteHeader/>
+                        <div className="container h-full py-2">{children}</div>
+                        <div className={"h-6 w-full dark:bg-slate-500"}>
 
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <TooltipProvider>
-                <div className="relative flex h-screen flex-col">
-                    <SiteHeader/>
-                    <div className="container h-full py-2">{children}</div>
-                    <div className={"h-6 w-full bg-slate-500"}>
-
+                        </div>
                     </div>
-                </div>
-                <TailwindIndicator/>
-            </TooltipProvider>
-        </ThemeProvider>
-
+                    <TailwindIndicator/>
+                </TooltipProvider>
+            </ThemeProvider>
+        </CounterStoreProvider>
         </body>
         </html>
     );
