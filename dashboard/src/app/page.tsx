@@ -1,13 +1,21 @@
-import Image from "next/image";
-import {Button} from "@/components/ui/button";
+import ChatUiComponent from "@/components/parts/chat-ui";
+import ChatSidePanelComponent from "@/components/parts/side-panel";
+import {Skeleton} from "@/components/ui/skeleton";
 
 export default function Home() {
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-
-                <Button>Click me</Button>
-
+        <main className="grid grid-cols-3 gap-4 w-full h-full">
+            <div className={"col-span-1 flex flex-col justify-between space-y-2"}>
+                <div className={"bg-slate-950 h-full flex flex-col-reverse space-y-2"}>
+                    <Skeleton className="w-full h-[20px] rounded-full"/>
+                    <Skeleton className="w-full h-[20px] rounded-full"/>
+                    <Skeleton className="w-full h-[20px] rounded-full"/>
+                    <Skeleton className="w-full h-[20px] rounded-full"/>
+                </div>
+                <ChatUiComponent/>
+            </div>
+            <div className={"col-span-2 flex flex-col-reverse justify-items-stretch"}>
+                <ChatSidePanelComponent/>
             </div>
         </main>
     );

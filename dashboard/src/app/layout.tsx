@@ -7,6 +7,7 @@ import {siteConfig} from "@/config/site"
 import {ThemeProvider} from "@/components/theme-provider";
 import {TailwindIndicator} from "@/components/tailwind-indicator";
 import {SiteHeader} from "@/components/site-header";
+import {TooltipProvider} from "@/components/ui/tooltip";
 // const inter = Inter({subsets: ["latin"]});
 const fontInter = Inter({
     subsets: ["latin"],
@@ -42,11 +43,16 @@ export default function RootLayout({
         )}>
 
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <div className="relative flex min-h-screen flex-col">
-                <SiteHeader/>
-                <div className="flex-1">{children}</div>
-            </div>
-            <TailwindIndicator/>
+            <TooltipProvider>
+                <div className="relative flex h-screen flex-col">
+                    <SiteHeader/>
+                    <div className="container h-full py-2">{children}</div>
+                    <div className={"h-6 w-full bg-slate-500"}>
+
+                    </div>
+                </div>
+                <TailwindIndicator/>
+            </TooltipProvider>
         </ThemeProvider>
 
         </body>
