@@ -223,17 +223,17 @@ files = [
 
 [[package]]
 name = "ceylon"
-version = "0.15.12"
+version = "0.15.13"
 description = "Ceylon is an advanced multi-agent platform specifically developed for Ceylon Aritficial Intelligence."
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "ceylon-0.15.12-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:1bc0b7ede90e590f44761e8b4ba63e335bed8bb5ed0395fe4c9395d008d47992"},
-    {file = "ceylon-0.15.12-py3-none-macosx_11_0_arm64.whl", hash = "sha256:4fde7a98be3c63f2465b1e6db569d313304ce8901a0255bade275eb08262d797"},
-    {file = "ceylon-0.15.12-py3-none-manylinux_2_34_x86_64.whl", hash = "sha256:bc7838ea9d6ebbd3655eaaf87936e306a446ec6320ee028651c071553e31ac68"},
-    {file = "ceylon-0.15.12-py3-none-win32.whl", hash = "sha256:d78dfcb41eb8a0c585fdafef4aacbb82c8c73e67201c23f8af3fd51ae084d0a7"},
-    {file = "ceylon-0.15.12-py3-none-win_amd64.whl", hash = "sha256:14cc7389c844a93395b61b12e52bd20dcc1b56eb9b361a25cf6e835f10ddf3d0"},
-    {file = "ceylon-0.15.12.tar.gz", hash = "sha256:4cfe6ca0876f9fa228d92c9d3fe8683e6ad56c7c248d5ad85e414c7d3f648df3"},
+    {file = "ceylon-0.15.13-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:a78eb52198c17fe829655b009b25536e9568082a0b67fd20087b48da1d49f129"},
+    {file = "ceylon-0.15.13-py3-none-macosx_11_0_arm64.whl", hash = "sha256:3c3f8f8e86c840577ab2070366933f40efc09b19bc2ec7be863ce51a0e38d3ae"},
+    {file = "ceylon-0.15.13-py3-none-manylinux_2_34_x86_64.whl", hash = "sha256:f829c19d1a89837924796d34f71215ee4853143491c9bdc83352f7001462c64f"},
+    {file = "ceylon-0.15.13-py3-none-win32.whl", hash = "sha256:70ee84f9b4848650eceb56680013086caea47ddc0830ec821bea198c5cc50715"},
+    {file = "ceylon-0.15.13-py3-none-win_amd64.whl", hash = "sha256:e6a8216eccdec20d7aae8bad5d5aff1c5b16b530867b61834e3c8616c258ccea"},
+    {file = "ceylon-0.15.13.tar.gz", hash = "sha256:aeccf45d62f47633ce4f246650edb3d6819e29f87f5f6bc32c8300ce47309f80"},
 ]
 
 [package.dependencies]
@@ -2082,4 +2082,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "650dfdebac17f89353a90834e9daf3875a48e75ac8258d452c9a7daaba43ee2e"
+content-hash = "97692d687f8f22ab70531e76d9d2ebe6391b8c3fb6c99d1b99b37d21a18e95ea"
