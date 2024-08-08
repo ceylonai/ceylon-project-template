@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-ceylon = "^0.15.11"
+ceylon = "^0.15.13"
 fastapi = "^0.112.0"
 python-socketio = "^5.11.3"
 uvicorn = "^0.30.5"

@@ -1,21 +1,20 @@
 import asyncio
 import pickle
 
-from ceylon import RunnerAgent
+from ceylon import CoreAdmin
 
 from agents.InterfaceAgent import InterfaceAgent
-from agents.data_emitter_agent import DataEmitAgent
 from agents.process_agent import ProcessAgent
 
 
 async def main():
-    runner = RunnerAgent(server_mode=True)
+    runner = CoreAdmin(name="main", port=7878, server_mode=True)
 
-    interface_agent = InterfaceAgent(name="interface", role="Communicate with outside")
-    processor_agent = ProcessAgent(name="processor", role="Process user requests")
-    data_emitter_agent = DataEmitAgent(name="data_emitter", role="Process user requests")
+    interface_agent = InterfaceAgent(name="interface", role="Communicate with outside", workspace_id="main",
+                                     admin_port=7878)
+    processor_agent = ProcessAgent(name="processor", role="Process user requests", workspace_id="main", admin_port=7878)
 
-    await runner.arun_admin(inputs=pickle.dumps({}), workers=[processor_agent, interface_agent, data_emitter_agent])
+    await runner.arun_admin(inputs=pickle.dumps({}), workers=[processor_agent, interface_agent])
 
 
 if __name__ == "__main__":
