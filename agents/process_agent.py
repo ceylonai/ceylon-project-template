@@ -1,14 +1,14 @@
-import pickle
-
-from ceylon import Agent
+from ceylon import Agent, on_message
 from loguru import logger
+
+from data.user_details import UserDetails
 
 
 class ProcessAgent(Agent):
 
-    async def on_message(self, agent_id: "str", data: "bytes", time: "int"):
-        data = pickle.loads(data)
-        logger.info(f"Received message from {agent_id}: {data}")
+    @on_message(UserDetails)
+    async def on_user_details(self, user_details: UserDetails):
+        logger.info(f"Received user details: {user_details}")
 
     async def run(self, inputs: "bytes"):
         logger.info(f"Process agent running with inputs: {inputs}")

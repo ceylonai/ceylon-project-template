@@ -9,6 +9,8 @@ from pydantic import BaseModel
 from starlette.middleware.cors import CORSMiddleware
 from uvicorn import Config, Server
 
+from data.user_details import UserDetails
+
 # Create a new AsyncServer
 app = FastAPI()
 origins = ["*"]
@@ -49,6 +51,7 @@ class InterfaceAgent(Agent):
         @sio.event
         async def connect(sid, environ):
             logger.debug(f"Client connected: {sid}")
+            await self.broadcast_data(UserDetails(name="test", email="test"))
 
         @sio.event
         async def disconnect(sid):
