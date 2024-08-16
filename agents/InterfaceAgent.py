@@ -9,6 +9,7 @@ from pydantic import BaseModel
 from starlette.middleware.cors import CORSMiddleware
 from uvicorn import Config, Server
 
+from data.message import Message
 from data.user_details import UserDetails
 
 # Create a new AsyncServer
@@ -27,13 +28,6 @@ sio = socketio.AsyncServer(async_mode='asgi', cors_allowed_origins='*')
 sio_asgi_app = socketio.ASGIApp(socketio_server=sio, other_asgi_app=app)
 
 
-class Message(BaseModel):
-    message: str
-    sender: str
-    time: datetime.datetime
-    type: str
-
-
 class InterfaceAgent(Agent):
 
     async def run(self, inputs: "bytes"):
@@ -43,8 +37,7 @@ class InterfaceAgent(Agent):
 
         @app.post("/api/chat")
         async def send_message(message: Message):
-            logger.info(f"{self.broadcast}")
-            await self.broadcast(pickle.dumps(message))
+            await self.broadcast_data(message)
             logger.info(f"Sent message: {message}")
 
         # Example Socket.IO event handler
