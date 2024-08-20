@@ -27,8 +27,15 @@ export const createChatStore = (
 ) => {
     return createStore<ChatStore>()((set) => ({
         ...initState,
-        addMessage: (message: Message) => set((state) => ({
-            messages: [...state.messages, message],
-        })),
+        addMessage: (message: Message) => set((state) => {
+            // check if message is already in array
+            console.log(state.messages)
+            if (state.messages.some((m) => m.id === message.id)) {
+                return state
+            }
+            return ({
+                messages: [...state.messages, message],
+            })
+        }),
     }))
 }

@@ -19,11 +19,11 @@ const ChatMessages = () => {
                             </div>
                             <div className="flex-1">
                                 <div className="text-sm">
-                                    <div className="font-medium text-gray-900">
+                                    <div className="font-medium text-gray-900 dark:text-slate-100">
                                         {message.sender}
                                     </div>
                                 </div>
-                                <div className="mt-1 text-sm text-gray-700">
+                                <div className="mt-1 text-sm text-blue-700 dark:text-blue-100">
                                     <p>
                                         {message.message}
                                     </p>

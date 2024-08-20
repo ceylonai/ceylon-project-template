@@ -3,6 +3,7 @@ export enum MessageType {
 }
 
 export interface Message {
+    id: string
     message: string
     sender: string
     time: Date

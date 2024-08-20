@@ -1,6 +1,7 @@
 "use client"
 
 import {CornerDownLeft, Mic, Paperclip} from "lucide-react"
+import { v4 as uuidv4 } from 'uuid';
 
 import {Button} from "@/components/ui/button"
 import {Label} from "@/components/ui/label"
@@ -24,6 +25,7 @@ export default function ChatUiComponent() {
         <form
             onSubmit={handleSubmit((data) => {
                 const message: Message = {
+                    id: uuidv4(),
                     message: data.message,
                     sender: 'user',
                     time: new Date(),
