@@ -1,5 +1,3 @@
-import pickle
-
 import socketio
 from ceylon import Agent, on_message
 from fastapi import FastAPI
